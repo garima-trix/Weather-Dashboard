@@ -1,0 +1,66 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Current weather and five-day city forecasts.">
+<title>Skyline Weather</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="shell">
+<header class="top">
+  <a class="brand" href="./"><span aria-hidden="true">◈</span> Skyline Weather</a>
+  <div class="units" role="group" aria-label="Temperature units">
+    <button type="button" id="celsius" aria-pressed="true">°C</button>
+    <button type="button" id="fahrenheit" aria-pressed="false">°F</button>
+  </div>
+</header>
+<main>
+  <h1>Weather Dashboard</h1>
+  <p class="intro">Current conditions and the five days ahead.</p>
+  <form id="search" class="search">
+    <input id="city" aria-label="City name" placeholder="Search a city, e.g. Mumbai, IN" maxlength="100" required>
+    <button class="primary" type="submit">Search</button>
+  </form>
+  <div id="favorites" class="favorites" role="group" aria-label="Favorite cities" hidden></div>
+  <details id="settings">
+    <summary>OpenWeatherMap setup</summary>
+    <form id="settings-form" class="search">
+      <input id="api-key" type="password" aria-label="OpenWeatherMap API key" placeholder="Enter your OpenWeatherMap API key" autocomplete="off" required>
+      <button class="primary" type="submit">Use key</button>
+    </form>
+    <p>Your key is used directly from this browser and kept for this tab session. <a href="https://openweathermap.org/appid">Get an API key</a></p>
+  </details>
+  <p id="status" role="status" hidden></p>
+  <div id="weather" aria-busy="false">
+    <section class="hero" aria-labelledby="location">
+      <div class="hero-main">
+        <div class="hero-copy">
+          <p id="data-label" class="eyebrow"></p>
+          <div class="location-row">
+            <h2 id="location"></h2>
+            <button type="button" id="favorite" class="favorite" aria-pressed="false" hidden></button>
+          </div>
+          <p id="temperature" class="temperature"></p>
+          <p id="condition" class="condition"></p>
+        </div>
+        <div id="weather-art" class="weather-art" aria-hidden="true"><span id="current-icon"></span></div>
+      </div>
+      <dl class="metrics">
+        <div><dt>Feels like</dt><dd id="feels"></dd></div>
+        <div><dt>Humidity</dt><dd id="humidity"></dd></div>
+        <div><dt>Wind speed</dt><dd id="wind"></dd></div>
+      </dl>
+    </section>
+    <section class="forecast" aria-labelledby="forecast-title">
+      <div class="section-title"><h2 id="forecast-title">5-Day Forecast</h2><p>City local time</p></div>
+      <ul id="days"></ul>
+    </section>
+  </div>
+</main>
+<footer>Weather data from <a href="https://openweathermap.org/">OpenWeatherMap</a></footer>
+</div>
+</body>
+</html>
